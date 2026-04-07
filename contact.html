@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contacte [El Hadji Moussa LY] — Développeur web." />
+  <title>Contact — [El Hadji Moussa LY]</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    
+    .tab-pane { display: none; }
+
+    .tab-pane--contact { display: block; }
+
+    #form-projet:target ~ .forms-wrap .tab-pane--contact { display: none; }
+    #form-projet:target ~ .forms-wrap .tab-pane--projet  { display: block; }
+
+    #form-contact:target ~ .forms-wrap .tab-pane--contact { display: block; }
+    #form-contact:target ~ .forms-wrap .tab-pane--projet  { display: none; }
+
+    .tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: var(--sp-md); }
+    .tab-link {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: var(--trans);
+    }
+    .tab-link:hover { color: var(--text); }
+
+    .tab-link--contact {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    #form-projet:target ~ .forms-wrap .tabs .tab-link--contact {
+      color: var(--muted);
+      border-bottom-color: transparent;
+    }
+    #form-projet:target ~ .forms-wrap .tabs .tab-link--projet {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    #form-contact:target ~ .forms-wrap .tabs .tab-link--contact {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    #form-contact:target ~ .forms-wrap .tabs .tab-link--projet {
+      color: var(--muted);
+      border-bottom-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#contenu-principal" class="skip-link">Aller au contenu</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">[El<span>.</span>LY]</a>
+      <nav class="nav__links" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#competences">Compétences</a>
+        <a href="index.html#experience">Expérience</a>
+        <a href="projets.html">Projets</a>
+        <a href="contact.html" class="nav__cta active">Me contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <main id="contenu-principal">
+    <section class="contact-page" style="padding-top: calc(var(--sp-xl) + 4rem);">
+      <div class="container">
+
+        <div class="contact-layout">
+
+          <div>
+            <span class="section-label anim">Restons en contact</span>
+
+            <h1 class="anim anim--d1"
+                style="font-size:clamp(2rem,4vw,3.2rem); margin-bottom:0.75rem;">
+              Parlons de<br>
+              <em style="color:var(--accent); font-style:italic;">ton projet.</em>
+            </h1>
+
+            <p class="anim anim--d2">
+              Tu as une question, une idée, ou tu veux qu'on travaille ensemble ?
+              Je suis disponible et je réponds rapidement.
+            </p>
+
+            <div style="margin-top: var(--sp-md);">
+
+              <div class="contact-info__item anim anim--d2">
+                <div class="contact-info__icon" aria-hidden="true">✉️</div>
+                <div>
+                  <div class="contact-info__label">elhadjily250@gmail.com</div>
+                  
+                  <a href="mailto:prenom.nom@email.com" class="contact-info__val">
+                    El hadji Moussa.LY@email.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-info__item anim anim--d3">
+                <div class="contact-info__icon" aria-hidden="true">📍</div>
+                <div>
+                  <div class="contact-info__label">Localisation</div>
+                  <span class="contact-info__val">Dakar, Sénégal</span>
+                </div>
+              </div>
+
+              <div class="contact-info__item anim anim--d4">
+                <div class="contact-info__icon" aria-hidden="true">⏱️</div>
+                <div>
+                  <div class="contact-info__label">Disponibilité</div>
+                  <span class="contact-info__val">Réponse sous 24–48h</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div style="margin-top: var(--sp-md);" class="anim anim--d5">
+              <p style="font-size:0.78rem; font-weight:700; text-transform:uppercase;
+                         letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem;">
+                Retrouve-moi sur
+              </p>
+              <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                <a href="https://github.com/elhadjily250-cloud"
+                   target="_blank" rel="noopener"
+                   class="btn btn--outline"
+                   style="padding:0.55rem 1.1rem; font-size:0.88rem;">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <span id="form-contact" tabindex="-1" aria-hidden="true"></span>
+          <span id="form-projet"  tabindex="-1" aria-hidden="true"></span>
+
+          <div class="forms-wrap">
+            <div class="form-card anim anim--d1">
+
+              <div class="tabs" role="tablist">
+                <a href="#form-contact"
+                   class="tab-link tab-link--contact"
+                   role="tab"
+                   aria-label="Formulaire de contact simple">
+                  ✉️ Me contacter
+                </a>
+                <a href="#form-projet"
+                   class="tab-link tab-link--projet"
+                   role="tab"
+                   aria-label="Formulaire de demande de projet">
+                  💼 Demander un projet
+                </a>
+              </div>
+
+              <div class="tab-pane tab-pane--contact" role="tabpanel">
+
+                <p class="form-card__title" style="font-family:var(--font-display); font-size:1.4rem; margin-bottom:0.4rem;">
+                  Envoie-moi un message
+                </p>
+                <p class="form-card__intro">
+                  Une question, une opportunité, un bonjour ? Écris-moi !
+                </p>
+
+                <form action="mailto:prenom.nom@email.com"
+                      method="post"
+                      enctype="text/plain"
+                      novalidate>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="c-prenom">Prénom <abbr title="champ obligatoire">*</abbr></label>
+                      <input
+                        type="text"
+                        id="c-prenom"
+                        name="prenom"
+                        placeholder="Ton prénom"
+                        required
+                        autocomplete="given-name"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="c-nom">Nom <abbr title="champ obligatoire">*</abbr></label>
+                      <input
+                        type="text"
+                        id="c-nom"
+                        name="nom"
+                        placeholder="Ton nom"
+                        required
+                        autocomplete="family-name"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="c-email">
+                      Adresse e-mail <abbr title="champ obligatoire">*</abbr>
+                    </label>
+                    <input
+                      type="email"
+                      id="c-email"
+                      name="email"
+                      placeholder="ton@email.com"
+                      required
+                      autocomplete="email"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="c-sujet">
+                      Sujet <abbr title="champ obligatoire">*</abbr>
+                    </label>
+                    <input
+                      type="text"
+                      id="c-sujet"
+                      name="sujet"
+                      placeholder="De quoi tu veux parler ?"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="c-message">
+                      Message <abbr title="champ obligatoire">*</abbr>
+                    </label>
+                    <textarea
+                      id="c-message"
+                      name="message"
+                      placeholder="Ton message ici…"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn--primary" style="width:100%;">
+                    Envoyer le message →
+                  </button>
+
+                  <p style="font-size:0.78rem; color:var(--muted); margin-top:0.75rem; text-align:center;">
+                    Les champs marqués * sont obligatoires.
+                    Le serveur d'envoi sera configuré ultérieurement.
+                  </p>
+
+                </form>
+              </div>
+
+              <div class="tab-pane tab-pane--projet" role="tabpanel">
+
+                <p class="form-card__title" style="font-family:var(--font-display); font-size:1.4rem; margin-bottom:0.4rem;">
+                  Décris ton projet
+                </p>
+                <p class="form-card__intro">
+                  Tu as un projet en tête ? Remplis ce formulaire et je t'enverrai un devis.
+                </p>
+
+                <form action="mailto:prenom.nom@email.com"
+                      method="post"
+                      enctype="text/plain"
+                      novalidate>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="p-prenom">Prénom <abbr title="champ obligatoire">*</abbr></label>
+                      <input
+                        type="text"
+                        id="p-prenom"
+                        name="prenom"
+                        placeholder="Ton prénom"
+                        required
+                        autocomplete="given-name"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="p-nom">Nom <abbr title="champ obligatoire">*</abbr></label>
+                      <input
+                        type="text"
+                        id="p-nom"
+                        name="nom"
+                        placeholder="Ton nom"
+                        required
+                        autocomplete="family-name"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="p-email">
+                      Adresse e-mail <abbr title="champ obligatoire">*</abbr>
+                    </label>
+                    <input
+                      type="email"
+                      id="p-email"
+                      name="email"
+                      placeholder="ton@email.com"
+                      required
+                      autocomplete="email"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="p-type">
+                      Type de projet <abbr title="champ obligatoire">*</abbr>
+                    </label>
+                    <select id="p-type" name="type" required>
+                      <option value="" disabled selected>Sélectionne un type</option>
+                      <option value="site-vitrine">Site vitrine</option>
+                      <option value="portfolio">Portfolio</option>
+                      <option value="e-commerce">Site Web</option>
+                      <option value="blog">Blog</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="p-budget">Budget approximatif</label>
+                    <select id="p-budget" name="budget">
+                      <option value="" disabled selected>Sélectionne une fourchette</option>
+                      <option value="moins-500">Moins de 300.000 FCFA </option>
+                      <option value="500-1000">300.000 FCFA – 200.000 FCFA</option>
+                      <option value="1000-3000">200.000 FCFA – 100.000 FCFA</option>
+                      <option value="plus-3000">Plus de 300.000 FCFA</option>
+                      <option value="a-definir">À définir ensemble</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="p-delai">Délai souhaité</label>
+                    <input
+                      type="text"
+                      id="p-delai"
+                      name="delai"
+                      placeholder="Ex : dans 1 mois…"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="p-description">
+                      Description du projet <abbr title="champ obligatoire">*</abbr>
+                    </label>
+                    <textarea
+                      id="p-description"
+                      name="description"
+                      placeholder="Décris ton projet : objectif, public cible, fonctionnalités, inspirations visuelles…"
+                      required
+                      style="min-height:160px;"
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn--primary" style="width:100%;">
+                    Envoyer ma demande →
+                  </button>
+
+                  <p style="font-size:0.78rem; color:var(--muted); margin-top:0.75rem; text-align:center;">
+                    Les champs marqués * sont obligatoires.
+                    Le serveur d'envoi sera configuré ultérieurement.
+                  </p>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__logo">[El<span>.</span>LY]</div>
+          <p class="footer__about">Développeur web en formation.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="https://github.com/elhadjily250-cloud" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2025 [Prénom Nom]. Tous droits réservés.</span>
+        <nav class="footer__socials" aria-label="Réseaux sociaux">
+          <a href="https://github.com/elhadjily250-cloud" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

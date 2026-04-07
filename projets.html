@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tous les projets de [El Hadji Moussa LY] — Développeur web." />
+  <title>Projets — [El Hadji Moussa LY]</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+   
+    .project-card { display: block; }
+
+   
+    #filtre-html:target ~ .filter-ui .filter-tag[href="#filtre-html"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+    #filtre-html:target ~ .projects-grid .project-card:not([data-html]) { display: none; }
+
+    
+    #filtre-css:target ~ .filter-ui .filter-tag[href="#filtre-css"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+    #filtre-css:target ~ .projects-grid .project-card:not([data-css]) { display: none; }
+
+    
+    #filtre-js:target ~ .filter-ui .filter-tag[href="#filtre-js"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+    #filtre-js:target ~ .projects-grid .project-card:not([data-js]) { display: none; }
+
+    
+    #filtre-php:target ~ .filter-ui .filter-tag[href="#filtre-php"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+    #filtre-php:target ~ .projects-grid .project-card:not([data-php]) { display: none; }
+
+    
+    #filtre-mysql:target ~ .filter-ui .filter-tag[href="#filtre-mysql"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+    #filtre-mysql:target ~ .projects-grid .project-card:not([data-mysql]) { display: none; }
+
+    
+    #filtre-all:target ~ .filter-ui .filter-tag[href="#filtre-all"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+    #filtre-all:target ~ .projects-grid .project-card         { display: block; }
+
+   
+    .filter-zone {
+      position: relative; 
+    }
+
+    
+    .filter-tag[href="#filtre-all"] {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+   
+    #filtre-html:target ~ .filter-ui .filter-tag[href="#filtre-all"],
+    #filtre-css:target  ~ .filter-ui .filter-tag[href="#filtre-all"],
+    #filtre-js:target   ~ .filter-ui .filter-tag[href="#filtre-all"],
+    #filtre-php:target  ~ .filter-ui .filter-tag[href="#filtre-all"],
+    #filtre-mysql:target~ .filter-ui .filter-tag[href="#filtre-all"] {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#contenu-principal" class="skip-link">Aller au contenu</a>
+
+  
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">[El<span>.</span>LY]</a>
+      <nav class="nav__links" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#competences">Compétences</a>
+        <a href="index.html#experience">Expérience</a>
+        <a href="projets.html" class="active">Projets</a>
+        <a href="contact.html" class="nav__cta">Me contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <main id="contenu-principal">
+    <div class="page-hero" style="background: var(--surface); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <span class="section-label anim">Portfolio</span>
+        <h1 class="anim anim--d1">Mes projets</h1>
+        <p class="anim anim--d2" style="margin-top:0.75rem; max-width:520px;">
+          Tout ce que j'ai construit — des projets de cours aux expérimentations personnelles.
+          Utilise les filtres pour naviguer par technologie.
+        </p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+
+        
+        <div style="background: var(--accent-lt); border: 1px solid rgba(45,106,79,0.2);
+                    border-radius: var(--radius-lg); padding: var(--sp-md);
+                    margin-bottom: var(--sp-md);">
+          <span class="section-label" style="margin-bottom:0.5rem; display:block;">
+            Recherche par mots-clés
+          </span>
+          <p style="font-size:0.9rem; margin-bottom: var(--sp-sm); color: var(--text);">
+            Saisis un nom de projet, une technologie ou un mot-clé pour trouver rapidement ce que tu cherches.
+          </p>
+          <form action="projets.html" method="get" role="search" aria-label="Recherche de projets">
+            <div class="search-wrap">
+              <label for="recherche" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);">
+                Rechercher un projet
+              </label>
+              <input
+                class="search-input"
+                type="search"
+                id="recherche"
+                name="q"
+                placeholder="Ex : HTML, landing page, calculatrice…"
+                autocomplete="off"
+                aria-label="Mots-clés de recherche"
+              />
+              <button type="submit" class="btn btn--primary">Rechercher</button>
+              <a href="projets.html" class="btn btn--outline">Réinitialiser</a>
+            </div>
+            <p style="font-size:0.8rem; color:var(--muted); margin-top:0.4rem;">
+              💡 Astuce : tu peux aussi utiliser <kbd style="padding:0.1rem 0.4rem; border:1px solid var(--border); border-radius:3px; font-size:0.8rem;">Ctrl + F</kbd>
+              pour chercher directement dans la page.
+            </p>
+          </form>
+        </div>
+
+        
+        <span id="filtre-all"   tabindex="-1" aria-hidden="true"></span>
+        <span id="filtre-html"  tabindex="-1" aria-hidden="true"></span>
+        <span id="filtre-css"   tabindex="-1" aria-hidden="true"></span>
+        <span id="filtre-js"    tabindex="-1" aria-hidden="true"></span>
+        <span id="filtre-php"   tabindex="-1" aria-hidden="true"></span>
+        <span id="filtre-mysql" tabindex="-1" aria-hidden="true"></span>
+
+        <div class="filter-zone">
+
+          
+          <div class="filter-ui filter-row" role="group" aria-label="Filtrer par technologie">
+            <a href="#filtre-all"   class="filter-tag">Tous</a>
+            <a href="#filtre-html"  class="filter-tag">HTML</a>
+            <a href="#filtre-css"   class="filter-tag">CSS</a>
+            
+          </div>
+
+          
+          <div class="projects-grid">
+
+            <article class="project-card anim anim--d1"
+                     data-html data-css
+                     aria-label="Projet : Portfolio personnel">
+              <div class="project-card__thumb">
+                
+                🖥️
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                </div>
+                <h2 class="project-card__title">Portfolio personnel</h2>
+                <p class="project-card__desc">
+                  Ce portfolio — site multipage responsive conçu en HTML et CSS pur.
+                  Animations CSS, design minimaliste et formulaires de contact.
+                </p>
+                
+              </div>
+            </article>
+
+            <article class="project-card anim anim--d3"
+                     data-html data-css>
+              <div class="project-card__thumb">🍽️</div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                </div>
+                <h2 class="project-card__title">Page d’accueil d’un restaurant</h2>
+                <p class="project-card__desc">
+                  Page d'atterrissage pour un restaurant fictif. CSS Grid,
+                  menu responsive et section réservation avec formulaire.
+                </p>
+                
+              </div>
+            </article>
+
+            <article class="project-card anim anim--d2"
+                     data-html data-css>
+              <div class="project-card__thumb">📄</div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                </div>
+                <h2 class="project-card__title">CV en ligne</h2>
+                <p class="project-card__desc">
+                  CV numérique interactif en HTML et CSS pur.
+                  Mise en page print-ready et version téléchargeable.
+                </p>
+                
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <a href="index.html" class="nav__logo">[El<span>.</span>LY]</a>
+          <p class="footer__about">Développeur web en formation.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="https://github.com/elhadjily250-cloud" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2025 [El hadji Moussa LY]. Tous droits réservés.</span>
+        <nav class="footer__socials" aria-label="Réseaux sociaux">
+          <a href="https://github.com/elhadjily250-cloud" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
