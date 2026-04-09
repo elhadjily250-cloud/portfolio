@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contacte [El Hadji Moussa LY] — Développeur web." />
-  <title>[El Hadji Moussa LY] </title>
+  <meta name="description" content="Portfolio de [EL Hadji Moussa LY] — Développeur web passionné par le HTML et le CSS." />
+  <title>[EL Hadji Moussa LY] — Développeur Web</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  
+  <!-- Lien d'évitement pour l'accessibilité -->
+  <a href="#contenu-principal" class="skip-link">Aller au contenu</a>
+
+  <!-- ============================================================
+       NAVIGATION — pur HTML/CSS (pas de JavaScript)
+       ============================================================ -->
   <header class="nav">
     <div class="container nav__inner">
-      <a href="../index.html" class="nav__logo">[El<span>.</span>LY]</a>
+
+      <a href="index.html" class="nav__logo">[EL<span>.</span>LY]</a>
+
       <nav class="nav__links" aria-label="Navigation principale">
         <a href="index.html" class="active">Accueil</a>
         <a href="#competences">Compétences</a>
@@ -23,32 +30,60 @@
 
     </div>
   </header>
+
+  <!-- ============================================================
+       MAIN
+       ============================================================ -->
   <main id="contenu-principal">
+
+    <!-- ====================================================
+         HERO — Présentation
+         ==================================================== -->
     <section class="hero">
       <div class="container">
         <div class="hero__inner">
+
+          <!-- Texte -->
           <div>
+            <div class="hero__badge anim">Disponible pour des projets</div>
+
             <h1 class="hero__title anim anim--d1">
               Bonjour, je suis<br>
-              <em>[El Hadji Moussa LY]</em>
+              <em>[EL Hadji Moussa LY]</em>
             </h1>
+
             <p class="hero__desc anim anim--d2">
-             Développeur web, je conçois et développe des sites web modernes, performants et centrés sur l’expérience utilisateur. <br>
+              Développeur web, je conçois et développe des sites web modernes, performants et centrés sur l’expérience utilisateur. <br>
             J’utilise des technologies telles que HTML, CSS, JavaScript, PHP et MySQL pour créer des interfaces dynamiques et des sites web fonctionnelles. <br>
             Toujours en apprentissage, je développe des solutions efficaces, évolutives et adaptées aux besoins des utilisateurs. <br>
             </p>
+
             <div class="hero__actions anim anim--d3">
-              <a href="pages/projets.html" class="btn btn--primary"></a>
-              <a href="pages/contact.html" class="btn btn--outline"></a>
-            </div> 
+              <a href="projets.html" class="btn btn--primary">Voir mes projets →</a>
+              <a href="contact.html" class="btn btn--outline">Me contacter</a>
+            </div>
+
+            <!-- Statistiques rapides -->
+            <div class="hero__stats anim anim--d4">
+              <div>
+                <span class="hero__stat-num">3+</span>
+                <span class="hero__stat-lbl">Projets réalisés</span>
+              </div>
+              <div>
+                <span class="hero__stat-num">4+</span>
+                <span class="hero__stat-lbl">Langages appris</span>
+              </div>
+              <div>
+                <span class="hero__stat-num">2</span>
+                <span class="hero__stat-lbl">Ans de formation en cours</span>
+              </div>
+            </div>
           </div>
-  <div class="hero__photo" aria-label="Photo de profil">
-          
-          <img src="Image 2026-04-06 at 21.36.10 (1).jpg" alt="Photo de [El Hadji Moussa LY]">
+
+          <div class="hero__photo" aria-label="Photo de profil">
+              <img src="Image 2026-04-06 at 21.36.10 (1).jpg" alt="Photo de [EL Hadji Moussa LY]">
             
-            <span class="hero__photo-emoji"></span>
             <span style="font-size:0.85rem; color:var(--accent); font-weight:500;">
-              
             </span>
           </div>
 
@@ -134,46 +169,35 @@
           <span class="section-label">Mon parcours</span>
           <h2>Expériences &amp; Formation</h2>
           <p style="margin-top:0.75rem; max-width:480px;">
-            Mon expérience avant et pendant mon parcours académique.
+            Ce que j'ai vécu avant et pendant ma formation de développeur web.
           </p>
         </div>
 
         <div>
 
           <div class="timeline__item anim anim--d1">
-            <div class="timeline__date">2024 – Aujourd'hui.</div>
+            <div class="timeline__date">2024 – Auj.</div>
             <div>
               <div class="timeline__role">Formation en Génie Logiciel et Administration réseau</div>
-              <div class="timeline__company">ESTM(Ecole Supérieure de Technologie et de Management)</div>
+              <div class="timeline__company">ESTM (Ecole Supérieure de Technologie et de Management)</div>
               <p class="timeline__desc">
-               * Apprentissage développement Web : HTML, CSS, JavaScript, PHP. <br>
-               * Gestion de bases de données : MySQL. <br>
-               * Réalisation de projets concrets dont ce portfolio. <br>
+                * Apprentissage développement Web : HTML, CSS, JavaScript, PHP. <br>
+                * Gestion de bases de données : MySQL. <br>
+                * Réalisation de projets concrets dont ce portfolio. <br>
               </p>
             </div>
           </div>
 
           <div class="timeline__item anim anim--d2">
-            <div class="timeline__date">2024 – Aujourd'hui.</div>
+            <div class="timeline__date">2022 – Auj.</div>
             <div>
-              <div class="timeline__role">Président associative</div>
-              <div class="timeline__company">Association</div>
+              <div class="timeline__role">[Président associative]</div>
+              <div class="timeline__company">[Association]</div>
               <p class="timeline__desc">
-               * Coordination des activités et gestion de l'équipe. <br>
-               * Organisation d'événements (réunions ...). <br>
-               * Prise de décision stratégique et gestion des ressources. <br>
-               * Développement du leadership et du  travail en équipe. <br>
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline__item anim anim--d3">
-            <div class="timeline__date">2023 – 2024</div>
-            <div>
-              <div class="timeline__role">Baccalauréat L</div>
-              <div class="timeline__company">Lycée Les Agnam</div>
-              <p class="timeline__desc">
-                Mention Passable.
+                * Coordination des activités et gestion de l'équipe. <br>
+                * Organisation d'événements (réunions ...). <br>
+                * Prise de décision stratégique et gestion des ressources. <br>
+                * Développement du leadership et du  travail en équipe. <br>
               </p>
             </div>
           </div>
@@ -181,8 +205,8 @@
           <div class="timeline__item anim anim--d3">
             <div class="timeline__date">2025 – 2026</div>
             <div>
-              <div class="timeline__role">Gestionnaire d'un Répertoire Téléphoniquen (C & MySQL ) </div>
-              <div class="timeline__company">ESTM</div>
+              <div class="timeline__role">[Gestionnaire d'un Répertoire Téléphoniquen (C & MySQL ) ]</div>
+              <div class="timeline__company">[ESTM]</div>
               <p class="timeline__desc">
                 * Mise en oeuvre de la persistance de données via l'interfaçage entre le langage C et un serveur MySQL. <br>
                 * Développement des fonctions (Saisie, Modification, Recherche, Suppression) pour la gestion des contacts. <br>
@@ -200,15 +224,9 @@
 
         <div style="margin-bottom: var(--sp-lg);">
           <span class="section-label">Mes réalisations</span>
-          <h2>Site Restaurant</h2>
+          <h2>Projets récents</h2>
           <p style="margin-top:0.75rem; max-width:480px;">
-            Ce projet consiste en la conception et le développement d’un site vitrine dédié à un restaurant fictif. <br>
-            L’objectif principal est de valoriser l’identité visuelle de l’établissement ainsi que ses offres culinaires, <br> 
-            à travers une interface moderne, responsive et intuitive. <br>
-            Le site permet aux utilisateurs de : <br>
-            Consulter le menu et les spécialités; <br>
-            Découvrir l’ambiance du restaurant; <br>
-            
+            Un aperçu de ce que j'ai construit. Tous mes projets sont sur la page dédiée.
           </p>
         </div>
 
@@ -216,15 +234,32 @@
 
           <article class="project-card anim anim--d1">
             <div class="project-card__thumb">
-                <img src="image 2026-04-04 191756.jpg" alt="Plat de restaurant ">
-
+              
+              <img src="image 2026-04-04 191756.jpg" alt="Site Restauran">
+              
             </div>
-            
+            <div class="project-card__body">
+              <div class="project-card__tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+              </div>
+              <h3 class="project-card__title">Site Restauran</h3>
+              <p class="project-card__desc">
+                Ce projet consiste en la conception et le développement d’un site vitrine dédié à un restaurant fictif. <br>
+            L’objectif principal est de valoriser l’identité visuelle de l’établissement ainsi que ses offres culinaires, <br> 
+            à travers une interface moderne, responsive et intuitive. <br>
+            Le site permet aux utilisateurs de : <br>
+            Consulter le menu et les spécialités; <br>
+            Découvrir l’ambiance du restaurant; <br>
+              </p>
+              <a href="projets.html" class="project-card__link">Voir le projet →</a>
             </div>
           </article>
 
           <article class="project-card anim anim--d2">
-            
+            <div>
+              <img src="image 1709890412_279.jpg" alt="Poubelle intelligente basée sur ESP32">
+            </div>
             <div class="project-card__body">
               <div class="project-card__tags">
                 <span class="tag">HTML</span>
@@ -232,7 +267,7 @@
               </div>
               <h3 class="project-card__title">Poubelle intelligente basée sur ESP32</h3>
               <p class="project-card__desc">
-                Conception et réalisation d’une poubelle intelligente basée sur ESP32, <br>
+                 Conception et réalisation d’une poubelle intelligente basée sur ESP32, <br>
                 capable de détecter automatiquement la présence d’un utilisateur et <br>
                 d’ouvrir son couvercle sans contact. <br>
 
@@ -242,32 +277,35 @@
 
                 Les données sont accessibles en temps réel via une interface web <br>
                 connectée en Wi-Fi. <br>
-                <img src="image 1709890412_279.jpg" alt="Poubelle intelligente basée sur ESP32">
               </p>
+              <a href="projets.html" class="project-card__link">Voir le projet →</a>
+            </div>
+          </article>
 
-              <div class="project-card__body">
+          <article class="project-card anim anim--d3">
+            <div>
+              <img src="image 2026-04-06 131612.jpg" alt="Générateur de fiche d’identité dynamique en PHP">
+            </div>
+            <div class="project-card__body">
               <div class="project-card__tags">
                 <span class="tag">HTML</span>
                 <span class="tag">CSS</span>
               </div>
-             
               <h3 class="project-card__title">Générateur de fiche d’identité dynamique en PHP</h3>
               <p class="project-card__desc">
                 Application web développée en PHP permettant de générer dynamiquement une fiche d’identité <br>
                 à partir de variables typées. <br> Ce projet met en pratique les fondamentaux du langage PHP : <br>
                 gestion des types de données, concaténation, logique conditionnelle et génération de contenu HTML côté serveur. <br>
-                <p>
-                <img src="image 2026-04-06 131612.jpg" alt="Générateur de fiche d’identité dynamique en PHP"> 
-                </p>
               </p>
-              <a href="#" class="project-card__link"></a>
+              <a href="projets.html" class="project-card__link">Voir le projet →</a>
             </div>
           </article>
 
         </div>
 
         <div style="text-align:center; margin-top:var(--sp-md);">
-          <a href="pages/projets.html" class="btn btn--outline anim anim--d4">
+          <a href="projets.html" class="btn btn--outline anim anim--d4">
+            Voir tous mes projets →
           </a>
         </div>
 
@@ -275,16 +313,25 @@
     </section>
 
   </main>
+
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
-       <a href="/index.html" class="nav__logo">[El<span>.</span>LY]</a>
+
+        <div>
+          <div class="footer__logo">[EL<span>.</span>LY]</div>
+          <p class="footer__about">
+            Développeur web en formation, toujours curieux et prêt à relever
+            de nouveaux défis numériques.
+          </p>
+        </div>
+
         <div class="footer__col">
           <h4>Navigation</h4>
           <ul>
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="pages/projets.html">Projets</a></li>
-            <li><a href="pages/contact.html">Contact</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
@@ -299,10 +346,9 @@
       </div>
 
       <div class="footer__bottom">
-        <span class="footer__copy">© 2025 [El Hadji Moussa LY]. Tous droits réservés.</span>
+        <span class="footer__copy">© 2025 [EL Hadji Moussa LY]. Tous droits réservés.</span>
         <nav class="footer__socials" aria-label="Réseaux sociaux">
           <a href="https://github.com/elhadjily250-cloud" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-        </nav>
       </div>
     </div>
   </footer>
