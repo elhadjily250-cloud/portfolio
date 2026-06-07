@@ -1,9 +1,14 @@
 <?php
-
 require 'fonctions.php';
+require 'config/connexion.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-$projets_recents = array_slice(obtenir_projets(), 0, 3);
+enregistrer_visite($pdo);
+
+$projets_recents = array_slice(obtenir_projets($pdo), 0, 3);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,7 +26,6 @@ $projets_recents = array_slice(obtenir_projets(), 0, 3);
   <?php require 'composants/navigation.php'; ?>
 
   <main id="contenu-principal">
-
 
     <section class="hero">
       <div class="container">
@@ -66,14 +70,12 @@ $projets_recents = array_slice(obtenir_projets(), 0, 3);
           </div>
 
           <div class="hero__photo" aria-label="Photo de profil">
-            <img src="Image-profil.jpg"
-                 alt="Photo de El Hadji Moussa LY">
+            <img src="Image-profil.jpg" alt="Photo de El Hadji Moussa LY">
           </div>
 
         </div>
       </div>
     </section>
-
 
     <section class="skills" id="competences">
       <div class="container">
@@ -87,24 +89,19 @@ $projets_recents = array_slice(obtenir_projets(), 0, 3);
         </div>
 
         <?php
-
-
         $competences = [
-            ['icone' => '🌐', 'nom' => 'HTML5',              'niveau' => 'Avancé',           'pct' => 85],
-            ['icone' => '🎨', 'nom' => 'CSS3 / Flexbox / Grid', 'niveau' => 'Intermédiaire', 'pct' => 70],
-            ['icone' => '⚡', 'nom' => 'JavaScript',          'niveau' => 'Débutant avancé', 'pct' => 50],
-            ['icone' => '🐘', 'nom' => 'PHP',                 'niveau' => 'En apprentissage','pct' => 35],
-            ['icone' => '🗄️', 'nom' => 'MySQL',              'niveau' => 'En apprentissage', 'pct' => 30],
-            ['icone' => '🔧', 'nom' => 'Git & GitHub',        'niveau' => 'Intermédiaire',   'pct' => 60],
+            ['icone' => '🌐', 'nom' => 'HTML5',               'niveau' => 'Avancé',           'pct' => 85],
+            ['icone' => '🎨', 'nom' => 'CSS3 / Flexbox / Grid','niveau' => 'Intermédiaire',    'pct' => 70],
+            ['icone' => '⚡', 'nom' => 'JavaScript',           'niveau' => 'Débutant avancé',  'pct' => 50],
+            ['icone' => '🐘', 'nom' => 'PHP',                  'niveau' => 'En apprentissage', 'pct' => 35],
+            ['icone' => '🗄️','nom' => 'MySQL',                 'niveau' => 'En apprentissage', 'pct' => 30],
+            ['icone' => '🔧', 'nom' => 'Git & GitHub',         'niveau' => 'Intermédiaire',    'pct' => 60],
         ];
         ?>
 
         <div class="skills__grid">
-          <?php foreach ($competences as $index => $comp) :
-            // Calcul du délai d'animation (d1 à d5, puis retour à d1)
-            $delai = ($index % 5) + 1;
-          ?>
-            <div class="skill-card anim anim--d<?= $delai ?>">
+          <?php foreach ($competences as $index => $comp) : ?>
+            <div class="skill-card anim anim--d<?= ($index % 5) + 1 ?>">
               <div class="skill-card__icon"><?= $comp['icone'] ?></div>
               <div class="skill-card__name"><?= htmlspecialchars($comp['nom']) ?></div>
               <div class="skill-card__level"><?= htmlspecialchars($comp['niveau']) ?></div>
@@ -118,7 +115,6 @@ $projets_recents = array_slice(obtenir_projets(), 0, 3);
       </div>
     </section>
 
-
     <section id="experience">
       <div class="container">
 
@@ -131,7 +127,6 @@ $projets_recents = array_slice(obtenir_projets(), 0, 3);
         </div>
 
         <div>
-
           <div class="timeline__item anim anim--d1">
             <div class="timeline__date">2024 – Auj.</div>
             <div>
@@ -171,11 +166,10 @@ $projets_recents = array_slice(obtenir_projets(), 0, 3);
               </p>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
-
 
     <section style="background: var(--surface);">
       <div class="container">
@@ -188,38 +182,37 @@ $projets_recents = array_slice(obtenir_projets(), 0, 3);
           </p>
         </div>
 
-
-        <div class="projects-grid">
-          <?php foreach ($projets_recents as $index => $projet) :
-            $delai = $index + 1;
-          ?>
-            <article class="project-card anim anim--d<?= $delai ?>">
-              <div class="project-card__thumb">
-                <?php if (!empty($projet['image'])) : ?>
-                  <img src="<?= htmlspecialchars($projet['image']) ?>"
-                       alt="<?= htmlspecialchars($projet['titre']) ?>">
-                <?php else : ?>
-                  <?= $projet['emoji'] ?>
-                <?php endif; ?>
-              </div>
-              <div class="project-card__body">
-                <div class="project-card__tags">
-                  <?php foreach ($projet['technologies'] as $tech) : ?>
-                    <span class="tag"><?= htmlspecialchars($tech) ?></span>
-                  <?php endforeach; ?>
+        <?php if (!empty($projets_recents)) : ?>
+          <div class="projects-grid">
+            <?php foreach ($projets_recents as $index => $projet) : ?>
+              <article class="project-card anim anim--d<?= $index + 1 ?>">
+                <div class="project-card__thumb">
+                  <?php if (!empty($projet['image'])) : ?>
+                    <img src="<?= htmlspecialchars($projet['image']) ?>"
+                         alt="<?= htmlspecialchars($projet['titre']) ?>">
+                  <?php else : ?>
+                    🖥️
+                  <?php endif; ?>
                 </div>
-                <h3 class="project-card__title"><?= htmlspecialchars($projet['titre']) ?></h3>
-                <p class="project-card__desc"><?= htmlspecialchars($projet['description']) ?></p>
-                <a href="projets.php" class="project-card__link">Voir le projet →</a>
-              </div>
-            </article>
-          <?php endforeach; ?>
-        </div>
+                <div class="project-card__body">
+                  <div class="project-card__tags">
+                    <?php foreach (explode(',', $projet['technologies']) as $tech) : ?>
+                      <span class="tag"><?= htmlspecialchars(trim($tech)) ?></span>
+                    <?php endforeach; ?>
+                  </div>
+                  <h3 class="project-card__title"><?= htmlspecialchars($projet['titre']) ?></h3>
+                  <p class="project-card__desc"><?= htmlspecialchars($projet['description']) ?></p>
+                  <a href="projets.php" class="project-card__link">Voir le projet →</a>
+                </div>
+              </article>
+            <?php endforeach; ?>
+          </div>
+        <?php else : ?>
+          <p style="color:var(--muted);">Les projets seront affichés ici dès qu'ils seront ajoutés via l'administration.</p>
+        <?php endif; ?>
 
         <div style="text-align:center; margin-top:var(--sp-md);">
-          <a href="projets.php" class="btn btn--outline anim anim--d4">
-            Voir tous mes projets →
-          </a>
+          <a href="projets.php" class="btn btn--outline anim anim--d4">Voir tous mes projets →</a>
         </div>
 
       </div>

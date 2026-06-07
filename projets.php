@@ -1,23 +1,17 @@
 <?php
 require 'fonctions.php';
+require 'config/connexion.php';
 
-$mot_cle = nettoyer($_GET['q'] ?? '');
-
-$tous_les_projets = obtenir_projets();
-
-if ($mot_cle !== '') {
-    $resultats = [];
-    foreach ($tous_les_projets as $projet) {
-        if (stripos($projet['titre'],       $mot_cle) !== false ||
-            stripos($projet['description'], $mot_cle) !== false) {
-            $resultats[] = $projet;
-        }
-    }
-} else {
-    $resultats = $tous_les_projets;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-$technologies_filtres = ['HTML', 'CSS', 'PHP', 'MySQL', 'C'];
+enregistrer_visite($pdo);
+
+$mot_cle  = nettoyer($_GET['q'] ?? '');
+$resultats = $mot_cle !== ''
+    ? rechercher_projets($pdo, $mot_cle)
+    : obtenir_projets($pdo);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,31 +22,10 @@ $technologies_filtres = ['HTML', 'CSS', 'PHP', 'MySQL', 'C'];
   <title>Projets — [El Hadji Moussa LY]</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-
-    .recherche-info {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: var(--sp-md);
-    }
+    .recherche-info { font-size: 0.88rem; color: var(--muted); margin-bottom: var(--sp-md); }
     .recherche-info strong { color: var(--text); }
-
-    .aucun-resultat {
-      text-align: center;
-      padding: var(--sp-lg) 0;
-      color: var(--muted);
-    }
+    .aucun-resultat { text-align: center; padding: var(--sp-lg) 0; color: var(--muted); }
     .aucun-resultat__emoji { font-size: 3rem; margin-bottom: var(--sp-sm); }
-
-    /* Champ de recherche avec erreur */
-    .search-input.erreur {
-      border-color: #e74c3c;
-    }
-    .champ-erreur {
-      font-size: 0.82rem;
-      color: #e74c3c;
-      margin-top: 0.3rem;
-      display: block;
-    }
   </style>
 </head>
 <body>
@@ -69,7 +42,6 @@ $technologies_filtres = ['HTML', 'CSS', 'PHP', 'MySQL', 'C'];
         <h1 class="anim anim--d1">Mes projets</h1>
         <p class="anim anim--d2" style="margin-top:0.75rem; max-width:520px;">
           Tout ce que j'ai construit — des projets de cours aux expérimentations personnelles.
-          Recherche par mot-clé ou filtre par technologie.
         </p>
       </div>
     </div>
@@ -104,32 +76,32 @@ $technologies_filtres = ['HTML', 'CSS', 'PHP', 'MySQL', 'C'];
 
         <?php if (!empty($resultats)) : ?>
           <div class="projects-grid">
-            <?php foreach ($resultats as $index => $projet) :
-              $delai = ($index % 5) + 1;
-            ?>
-              <article class="project-card anim anim--d<?= $delai ?>"
+            <?php foreach ($resultats as $index => $projet) : ?>
+              <article class="project-card anim anim--d<?= ($index % 5) + 1 ?>"
                        aria-label="Projet : <?= htmlspecialchars($projet['titre']) ?>">
-
                 <div class="project-card__thumb">
                   <?php if (!empty($projet['image'])) : ?>
                     <img src="<?= htmlspecialchars($projet['image']) ?>"
                          alt="<?= htmlspecialchars($projet['titre']) ?>"
                          loading="lazy">
                   <?php else : ?>
-                    <?= $projet['emoji'] ?>
+                    🖥️
                   <?php endif; ?>
                 </div>
-
                 <div class="project-card__body">
                   <div class="project-card__tags">
-                    <?php foreach ($projet['technologies'] as $tech) : ?>
-                      <span class="tag"><?= htmlspecialchars($tech) ?></span>
+                    <?php foreach (explode(',', $projet['technologies']) as $tech) : ?>
+                      <span class="tag"><?= htmlspecialchars(trim($tech)) ?></span>
                     <?php endforeach; ?>
                   </div>
                   <h2 class="project-card__title"><?= htmlspecialchars($projet['titre']) ?></h2>
                   <p class="project-card__desc"><?= htmlspecialchars($projet['description']) ?></p>
+                  <?php if (!empty($projet['lien'])) : ?>
+                    <a href="<?= htmlspecialchars($projet['lien']) ?>" class="project-card__link" target="_blank" rel="noopener">
+                      Voir le projet →
+                    </a>
+                  <?php endif; ?>
                 </div>
-
               </article>
             <?php endforeach; ?>
           </div>
@@ -137,12 +109,12 @@ $technologies_filtres = ['HTML', 'CSS', 'PHP', 'MySQL', 'C'];
         <?php else : ?>
           <div class="aucun-resultat">
             <div class="aucun-resultat__emoji">🔍</div>
-            <p>Aucun projet ne correspond à
-              &laquo;&nbsp;<strong><?= htmlspecialchars($mot_cle) ?></strong>&nbsp;&raquo;.
-            </p>
-            <a href="projets.php" class="btn btn--outline" style="margin-top: var(--sp-sm);">
-              Voir tous les projets
-            </a>
+            <?php if ($mot_cle !== '') : ?>
+              <p>Aucun projet ne correspond à &laquo;&nbsp;<strong><?= htmlspecialchars($mot_cle) ?></strong>&nbsp;&raquo;.</p>
+              <a href="projets.php" class="btn btn--outline" style="margin-top: var(--sp-sm);">Voir tous les projets</a>
+            <?php else : ?>
+              <p>Aucun projet pour l'instant. Reviens bientôt !</p>
+            <?php endif; ?>
           </div>
         <?php endif; ?>
 

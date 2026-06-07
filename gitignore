@@ -1,0 +1,6 @@
+# Fichier de connexion à la base de données — ne jamais versionner
+config/connexion.php
+
+# Fichiers système
+.DS_Store
+Thumbs.db
